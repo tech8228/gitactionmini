@@ -1,0 +1,59 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.test
+
+# Build output
+dist/
+build/
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Docker artifacts
+.dockerignore
+Dockerfile*
+
+# Optional caches
+.cache/
+.eslintcache
+.rpt2_cache/
+.rts2_cache_*
+
+# Misc
+*.tgz
+*.swp
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# REPL history
+.node_repl_history
