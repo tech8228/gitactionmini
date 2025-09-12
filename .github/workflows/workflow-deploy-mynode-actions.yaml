@@ -3,6 +3,9 @@ name: Deploy to MiniKube using GitHub Actions CI/CD
 on:
   push:
     branches: [ main ]
+# on:
+#   workflow_dispatch:
+
 
 jobs:
   build-and-deploy:
