@@ -37,9 +37,7 @@ coverage/
 .DS_Store
 Thumbs.db
 
-# Docker artifacts
-.dockerignore
-Dockerfile*
+
 
 # Optional caches
 .cache/
