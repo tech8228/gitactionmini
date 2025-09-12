@@ -40,10 +40,10 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
-        context: .
-        file: ./Dockerfile
+        context: ./gitactionmini
+        file: ./gitactionmini/Dockerfile
         push: true
-        tags: tech8228/minikubenode-app:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/minikubenode-app:latest
 
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
