@@ -1,0 +1,61 @@
+name: Deploy to MiniKube using GitHub Actions CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    name: Build Node js dockerImage and deploy in MiniKube
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: tech8228/minikubenode-app:latest
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'latest'
+
+    - name: Start Minikube
+      uses: tech8228/setup-minikube@latest
+
+    - name: Verify Minikube cluster
+      run: kubectl get pods -A
+
+    - name: Deploy to Kubernetes
+      run: kubectl apply -f deployk8s_minicube.yml
+
+    - name: Test service URLs
+      run: |
+        minikube service list
+        minikube service nodejs-app --url
