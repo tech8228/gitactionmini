@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: minicube-nodejs
-        image: "tech8228/nodejs-app:latest"
+        image: "tech8228/minikubenode-app:latest"
         ports:
         - containerPort: 3000
 
