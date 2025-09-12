@@ -47,7 +47,7 @@ jobs:
         version: 'latest'
 
     - name: Start Minikube
-      uses: tech8228/setup-minikube@latest
+      uses: medyagh/setup-minikube@latest
 
     - name: Verify Minikube cluster
       run: kubectl get pods -A
