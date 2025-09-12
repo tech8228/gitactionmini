@@ -29,7 +29,7 @@ spec:
   selector:
     app: nodejs-app
   ports:
-    - protocol: http
+    - protocol: TCP
       port: 80
       targetPort: 3000
 
