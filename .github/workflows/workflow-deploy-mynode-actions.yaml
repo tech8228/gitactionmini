@@ -73,6 +73,9 @@ jobs:
         kubectl describe deployment nodejs-mini-deployment
         kubectl get endpoints nodejs-app-service
 
+
+# just
+
     - name: Test service URLs
       run: |
         minikube service list
